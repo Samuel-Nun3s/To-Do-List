@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-Do List</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+</head>
+<body>
+    <section id="todo">
+        <header>
+            <h1>Minha Lista de Tarefas</h1>
+        </header>
+        <div id="todo-add">
+            <form>
+                <input type="text" name="tarefa" id="tarefa" placeholder="Nova Tarefa...">
+                <input type="button" value="Adicionar" onclick="">
+            </form>
+        </div>
+        <div id="todo-edit">
+            <form>
+                <input type="text" name="edit" id="edit" placeholder="Editar Tarefa...">
+                <button class="check-btn">
+                    <span class="material-symbols-outlined">
+                        check
+                    </span>
+                </button>
+                <button>
+                    Cancelar
+                </button>
+            </form>
+        </div>
+        <div id="todo-list">
+            <div class="todo-tarefas">
+                <h3>Tarefa 1</h3>
+                <button class="check-btn">
+                    <span class="material-symbols-outlined">
+                        check
+                    </span>
+                </button>
+                <button class="edit-btn">
+                    <span class="material-symbols-outlined">
+                        edit_square
+                    </span>
+                </button>
+                <button class="cancel-btn">
+                    <span class="material-symbols-outlined">
+                        close
+                    </span>
+                </button>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
