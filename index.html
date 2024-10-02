@@ -13,39 +13,37 @@
         <header>
             <h1>Minha Lista de Tarefas</h1>
         </header>
-        <div id="todo-add">
+        <div id="todo-add" class="input">
             <form>
-                <input type="text" name="tarefa" id="tarefa" placeholder="Nova Tarefa...">
-                <input type="button" value="Adicionar" onclick="">
+                <input type="text" name="tarefa" id="tarefa" class="caixa" placeholder="Nova Tarefa...">
+                <input type="button" value="Adicionar" class="btn-txt" onclick="">
             </form>
         </div>
-        <div id="todo-edit">
+        <div id="todo-edit" class="input">
             <form>
-                <input type="text" name="edit" id="edit" placeholder="Editar Tarefa...">
-                <button class="check-btn">
+                <input type="text" name="edit" id="edit" class="caixa" placeholder="Editar Tarefa...">
+                <button class="btn">
                     <span class="material-symbols-outlined">
                         check
                     </span>
                 </button>
-                <button>
-                    Cancelar
-                </button>
+                <input type="button" value="Cancelar" class="btn-txt cancel" onclick="">
             </form>
         </div>
         <div id="todo-list">
             <div class="todo-tarefas">
                 <h3>Tarefa 1</h3>
-                <button class="check-btn">
+                <button class="btn confirm">
                     <span class="material-symbols-outlined">
                         check
                     </span>
                 </button>
-                <button class="edit-btn">
+                <button class="btn">
                     <span class="material-symbols-outlined">
                         edit_square
                     </span>
                 </button>
-                <button class="cancel-btn">
+                <button class="btn cancel">
                     <span class="material-symbols-outlined">
                         close
                     </span>
