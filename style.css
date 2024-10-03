@@ -92,6 +92,7 @@ header {
     max-width: 400px;
     background-color: rgb(39, 39, 39);
     margin: auto;
+    margin-bottom: 10px;
     border-radius: 17px;
     padding: 21px 25px 25px 25px;
 }
