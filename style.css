@@ -109,6 +109,6 @@ header {
     top: 0px;
 }
 
-.check > h3 {
+.check {
     text-decoration: line-through;
 }
