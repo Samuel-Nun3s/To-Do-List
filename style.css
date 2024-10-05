@@ -31,7 +31,7 @@ header {
 }
 
 #todo-edit {
-    /*display: none;*/
+    display: none;
 }
 
 .input {
@@ -107,4 +107,8 @@ header {
 .todo-tarefas > .btn {
     float: right;
     top: 0px;
+}
+
+.check {
+    text-decoration: line-through;
 }
