@@ -29,6 +29,7 @@ function adicionar() {
                 btn.setAttribute("class", "btn cancel");
             } else if (c == 2) {
                 span.innerHTML = "edit_square"; // Icone de edição
+                btn.setAttribute("class", "btn edit")
             } else if (c == 3) {
                 span.innerHTML = "check"; // Icone de check
                 btn.setAttribute("class", "btn confirm");
@@ -50,16 +51,54 @@ document.addEventListener("DOMContentLoaded", function() {
     // Delegação de eventos: ouve todos os cliques no contêiner `todo-list`
     todoList.addEventListener("click", function(event) {
         if (event.target.closest(".confirm")) {  // Verifica se foi clicado um botão de "check"
-            var task = event.target.closest(".todo-tarefas").querySelector("h3");
-            if (task.style.textDecoration === "line-through") {
+            var task = event.target.closest(".todo-tarefas").querySelector("h3"); // Coleta o h3 para a manipulação
+
+            if (task.style.textDecoration === "line-through") { // Verifica se o h3 ja esta riscado ou nao
                 task.style.textDecoration = "none";
             } else {
                 task.style.textDecoration = "line-through";
             }
+        } else if (event.target.closest(".cancel")) {
+            task = event.target.closest(".todo-tarefas").querySelector("h3"); // Coleta o h3 para a manipulação
+            var div = task.parentNode;
+            div.remove(); // remove a div tarefa
+
+        } else if (event.target.closest(".edit")) { 
+            task = event.target.closest(".todo-tarefas").querySelector("h3"); // Coleta o h3 para a manipulação
+            titulo = task;
+            var todo_list = document.getElementById("todo-list");
+            var todo_add = document.getElementById("todo-add");
+            var todo_edit = document.getElementById("todo-edit");
+
+            todo_list.style.display = "none";
+            todo_add.style.display = "none"; // Troca o menu de tarefas, para o menu de edição
+            todo_edit.style.display = "block";
+
         }
     });
 });
 
-function cancelar() {
+function cancelarEdit() {
+    var todo_list = document.getElementById("todo-list");
+    var todo_add = document.getElementById("todo-add");
+    var todo_edit = document.getElementById("todo-edit");
 
+    todo_list.style.display = "block";
+    todo_add.style.display = "block";
+    todo_edit.style.display = "none";
+}
+
+var titulo;
+
+function editar() {
+    var input = document.getElementById("edit").value;
+    titulo.innerHTML = input;
+
+    var todo_list = document.getElementById("todo-list");
+    var todo_add = document.getElementById("todo-add");
+    var todo_edit = document.getElementById("todo-edit");
+
+    todo_list.style.display = "block";
+    todo_add.style.display = "block";
+    todo_edit.style.display = "none";
 }
