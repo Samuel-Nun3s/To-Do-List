@@ -22,12 +22,12 @@
         <div id="todo-edit" class="input">
             <form>
                 <input type="text" name="edit" id="edit" class="caixa" placeholder="Editar Tarefa...">
-                <button class="btn">
+                <button class="btn editar" type="button" onclick="editar()">
                     <span class="material-symbols-outlined">
                         check
                     </span>
                 </button>
-                <input type="button" value="Cancelar" class="btn-txt cancel" onclick="">
+                <input type="button" value="Cancelar" class="btn-txt" onclick="cancelarEdit()">
             </form>
         </div>
         <div id="todo-list">
@@ -38,7 +38,7 @@
                         close
                     </span>
                 </button>
-                <button class="btn">
+                <button class="btn edit">
                     <span class="material-symbols-outlined">
                         edit_square
                     </span>
@@ -56,7 +56,7 @@
                         close
                     </span>
                 </button>
-                <button class="btn">
+                <button class="btn edit">
                     <span class="material-symbols-outlined">
                         edit_square
                     </span>
