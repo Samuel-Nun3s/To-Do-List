@@ -148,4 +148,5 @@ function editar() {
     document.getElementById("todo-add").style.display = "block";
     document.getElementById("todo-edit").style.display = "none";
     tarefaEditando = null;
+    
 }
