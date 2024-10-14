@@ -78,6 +78,7 @@ function adicionarTarefaNoDOM(tarefa) {
     todo_list.appendChild(div); // Adiciona a nova tarefa á lista de tarefas
 }
 
+// Variaveis para trazer os dados para um escopo global
 var titulo;
 var taskId;
 
@@ -127,7 +128,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
 var tarefaEditando = null;
 
-function cancelarEdit() {
+function cancelarEdit() { // Função que cancela a edição da tarefa
     document.getElementById("todo-list").style.display = "block";
     document.getElementById("todo-add").style.display = "block";
     document.getElementById("todo-edit").style.display = "none";
@@ -148,5 +149,5 @@ function editar() {
     document.getElementById("todo-add").style.display = "block";
     document.getElementById("todo-edit").style.display = "none";
     tarefaEditando = null;
-    
+
 }
