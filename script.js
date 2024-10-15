@@ -23,23 +23,23 @@ function adicionar() {
     if (nome_tarefa.length === 0) { // Verificação para que o nome da tarefa não fique vazio
         window.alert("Nome Inexistente! Tente Novamente."); 
     } else {
-        const tarefaObj = {
+        const tarefaObj = { // Objeto para armazenar as tarefas
             id: Date.now(), // ID único baseado no timestap
             nome: nome_tarefa,
             completada: false
         }
 
-        tarefas.push(tarefaObj);
-        salvalLocalStorage();
-        adicionarTarefaNoDOM(tarefaObj);
+        tarefas.push(tarefaObj); // Adiciona o Objeto dentro do array
+        salvalLocalStorage(); // Função para Salvar no LocalStorage
+        adicionarTarefaNoDOM(tarefaObj); // Função para Adicionar tarefa no DOM
 
         tarefa.value = ""; // Limpa o campo de adição da tarefa
         tarefa.focus(); // Coloca o cursos novamente sobre a caixa de titulo, para que uma proxima tarefa possa ser registrada
     }
 }
 
-function adicionarTarefaNoDOM(tarefa) {
-    const todo_list = document.getElementById("todo-list");
+function adicionarTarefaNoDOM(tarefa) { // Função que adiciona as tareas ao DOM
+    const todo_list = document.getElementById("todo-list"); // Coleta o elemento do DOM aonde as tarefas serão mostradas
 
     var div = document.createElement("div"); // Cria o elemento div da tarefa
     div.setAttribute("class", "todo-tarefas"); // Seta os atributos para que todas as divs fiquem no mesmo padrão
@@ -47,35 +47,30 @@ function adicionarTarefaNoDOM(tarefa) {
 
     var h3 = document.createElement("h3"); // Cria o titulo da tarefa
     h3.innerHTML = tarefa.nome; // Insere o nome Informado na tarefa
-    if (tarefa.completada) {
+    if (tarefa.completada) { // Verifica se a tarefa esta completada
         h3.style.textDecoration = "line-through";
     }
         
     div.appendChild(h3); // Adiciona o elemento h3 a div da tarefa
+
+    // Insere os Botões:
+    insereBotoes("close", "cancel", div);
+    insereBotoes("edit_square", "edit", div);
+    insereBotoes("check", "confirm", div);
     
-    // Insere os Botoes:
-    for (var c = 1; c <= 3; c++) { 
-        var span = document.createElement("span"); // Declara um span a cada looping para cada botao
-        var btn = document.createElement("button"); // Declara um botao a cada looping para cada botao
-        
-        btn.setAttribute("class", "btn"); // Seta a classe do botao, para os estilos css
-        span.setAttribute("class", "material-symbols-outlined"); // Seta a classe do span, para podermos usar os icones
-        
-        if (c == 1) {
-            span.innerHTML = "close"; // Icone de X
-            btn.setAttribute("class", "btn cancel");
-        } else if (c == 2) {
-            span.innerHTML = "edit_square"; // Icone de edição
-            btn.setAttribute("class", "btn edit")
-        } else if (c == 3) {
-            span.innerHTML = "check"; // Icone de check
-            btn.setAttribute("class", "btn confirm");
-        }
-        
-        div.appendChild(btn); // Adiciona um novo botao a cada ciclo; 
-        btn.append(span); // Adiciona o icone no botao a cada ciclo;
-    }
     todo_list.appendChild(div); // Adiciona a nova tarefa á lista de tarefas
+}
+
+function insereBotoes(simbolo, tipo, div) { // Função para inserir os Botões
+    const span = document.createElement("span"); // Criando o elemento "span", para declarar o simbolo
+    span.setAttribute("class", "material-symbols-outlined");
+
+    const btn = document.createElement("button"); // Cria o botão aonde o simbolo será colocado
+    btn.setAttribute("class", `btn ${tipo}`);
+
+    span.innerHTML = simbolo; // Insere o simbolo no span
+    div.appendChild(btn); // Insere o botão na div da tarefa
+    btn.append(span); // Insere o span no botão
 }
 
 // Variaveis para trazer os dados para um escopo global
@@ -85,31 +80,32 @@ var taskId;
 document.addEventListener("DOMContentLoaded", function() {
     carregarLocalStorage();
 
-    var todoList = document.getElementById("todo-list");
+    var todoList = document.getElementById("todo-list"); // Coleta o local aonde as tarefas são mostradas
     
     // Delegação de eventos: ouve todos os cliques no contêiner `todo-list`
     todoList.addEventListener("click", function(event) {
 
-            var task = event.target.closest(".todo-tarefas");
-            var tarefaId = parseInt(task.getAttribute("data-id"));
-            var tarefaIndex = tarefas.findIndex(t => t.id === tarefaId);
+            var task = event.target.closest(".todo-tarefas"); // Verifica qual tarefa foi clicada
+            var tarefaId = parseInt(task.getAttribute("data-id")); // Extrai o ID da tarefa clicada
+            var tarefaIndex = tarefas.findIndex(t => t.id === tarefaId); // Extrai index da tarefa clicada
 
         if (event.target.closest(".confirm")) {  // Verifica se foi clicado um botão de "check"
             var h3 = task.querySelector("h3"); // Coleta o h3 para a manipulação
 
-            if (h3.style.textDecoration === "line-through") { // Verifica se o h3 ja esta riscado ou nao
+            // Verifica se o h3 ja esta riscado ou nao
+            if (h3.style.textDecoration === "line-through") { 
                 h3.style.textDecoration = "none";
                 tarefas[tarefaIndex].completada = false;
-                salvalLocalStorage();
+                salvalLocalStorage(); // Salva as alterações no LocalStorage
             } else {
                 h3.style.textDecoration = "line-through";
                 tarefas[tarefaIndex].completada = true;
-                salvalLocalStorage();
+                salvalLocalStorage(); // Salva as alterações no LocalStorage
             }
 
         } else if (event.target.closest(".cancel")) {
-            tarefas.splice(tarefaIndex, 1);
-            salvalLocalStorage();
+            tarefas.splice(tarefaIndex, 1); // 
+            salvalLocalStorage(); // Salva as alterações no LocalStorage
             task.remove(); // remove a div tarefa
             
         } else if (event.target.closest(".edit")) { 
