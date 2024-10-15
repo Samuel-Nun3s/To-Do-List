@@ -16,39 +16,22 @@
         <div id="todo-add" class="input">
             <form>
                 <input type="text" name="tarefa" id="tarefa" class="caixa" placeholder="Nova Tarefa...">
-                <input type="button" value="Adicionar" class="btn-txt" onclick="">
+                <input type="button" value="Adicionar" class="btn-txt" onclick="adicionar()">
             </form>
         </div>
         <div id="todo-edit" class="input">
             <form>
                 <input type="text" name="edit" id="edit" class="caixa" placeholder="Editar Tarefa...">
-                <button class="btn">
+                <button class="btn editar" type="button" onclick="editar()">
                     <span class="material-symbols-outlined">
                         check
                     </span>
                 </button>
-                <input type="button" value="Cancelar" class="btn-txt cancel" onclick="">
+                <input type="button" value="Cancelar" class="btn-txt" onclick="cancelarEdit()">
             </form>
         </div>
         <div id="todo-list">
-            <div class="todo-tarefas">
-                <h3>Tarefa 1</h3>
-                <button class="btn confirm">
-                    <span class="material-symbols-outlined">
-                        check
-                    </span>
-                </button>
-                <button class="btn">
-                    <span class="material-symbols-outlined">
-                        edit_square
-                    </span>
-                </button>
-                <button class="btn cancel">
-                    <span class="material-symbols-outlined">
-                        close
-                    </span>
-                </button>
-            </div>
+
         </div>
     </section>
 </body>
