@@ -104,20 +104,20 @@ document.addEventListener("DOMContentLoaded", function() {
             }
 
         } else if (event.target.closest(".cancel")) {
-            tarefas.splice(tarefaIndex, 1); // 
+            tarefas.splice(tarefaIndex, 1); // Remove a tarefa clicada do array de tarefas
             salvalLocalStorage(); // Salva as alterações no LocalStorage
-            task.remove(); // remove a div tarefa
+            task.remove(); // Remove a div tarefa
             
         } else if (event.target.closest(".edit")) { 
             h3 = task.querySelector("h3"); // Coleta o h3 para a manipulação
 
-            taskId = tarefaIndex;
-            titulo = h3;
+            taskId = tarefaIndex; // Passando o ID da tarefa para o escopo Global
+            titulo = h3; // Passando o Titulo da tarefa para o escopo Global
 
+            // Muda o display para o modo de edição
             document.getElementById("todo-list").style.display = "none";
             document.getElementById("todo-add").style.display = "none";
             document.getElementById("todo-edit").style.display = "block";
-
         }
     });
 });
@@ -125,25 +125,27 @@ document.addEventListener("DOMContentLoaded", function() {
 var tarefaEditando = null;
 
 function cancelarEdit() { // Função que cancela a edição da tarefa
+    // Muda o display para o modo de adição
     document.getElementById("todo-list").style.display = "block";
     document.getElementById("todo-add").style.display = "block";
     document.getElementById("todo-edit").style.display = "none";
 }
 
-function editar() {
-    var input = document.getElementById("edit").value.trim();
-    if (input.length === 0) {
+function editar() { // Função para editar o nome das tarefas
+    var input = document.getElementById("edit").value.trim(); // Coleta o novo nome da tarefa
+    if (input.length === 0) { // Verifica se o nome não esta vazio
         window.alert("O nome da tarefa não pode estar vazio.");
         return;
     }
 
-    tarefas[taskId].nome = input;
-    salvalLocalStorage();
-    titulo.innerHTML = input;
+    // Troca o nome da tarefa
+    tarefas[taskId].nome = input; // Troca o nome da tarefa no array de tarefas 
+    salvalLocalStorage(); // Salva as modificações no LocalStorage
+    titulo.innerHTML = input; // Troca o nome da tarefa para o novo nome
 
+    // Muda o display para o modo de adição
     document.getElementById("todo-list").style.display = "block";
     document.getElementById("todo-add").style.display = "block";
     document.getElementById("todo-edit").style.display = "none";
     tarefaEditando = null;
-
 }
